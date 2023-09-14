@@ -1,0 +1,10 @@
+{
+  "realm": "Keycloak Practice",
+  "auth-server-url": "http://localhost:8080/auth/",
+  "ssl-required": "external",
+  "resource": "service1-backend",
+  "credentials": {
+    "secret": "A3niuoYN4AvlNSQQvGca1rAiH4oxoAYI"
+  },
+  "confidential-port": 0
+}

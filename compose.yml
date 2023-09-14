@@ -20,5 +20,20 @@ services:
       POSTGRES_DB: keycloak
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data:delegated
     ports:
       - 5432:5432
+  service1-backend:
+    build:
+      context: ./service1/backend
+      dockerfile: "Dockerfile.dev"
+    volumes:
+      - ./service1/backend:/app:cached
+    ports:
+      - 8000:8000
+    depends_on:
+      - keycloak
+
+volumes:
+  postgres-data:
