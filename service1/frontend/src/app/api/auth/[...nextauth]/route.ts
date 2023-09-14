@@ -20,8 +20,21 @@ const handler = NextAuth({
           email: token.email,
           emailVerified: token.email_verified,
           accessToken: token.accessToken,
+          accessTokenExpires: token.accessTokenExpires,
+          refreshToken: token.refreshToken,
         },
       };
+    },
+    async jwt({ token, user, account }) {
+      if (account && account.expires_at && user) {
+        return {
+          ...token,
+          accessToken: account.access_token,
+          accessTokenExpires: Date.now() + account.expires_at * 1000,
+          refreshToken: account.refresh_token,
+        };
+      }
+      return token;
     },
   },
 });

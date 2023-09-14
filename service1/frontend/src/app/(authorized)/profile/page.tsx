@@ -2,7 +2,6 @@
 import { useUser } from "@/app/recoil/user";
 import { Divider } from "@chakra-ui/layout";
 import { Box } from "@chakra-ui/react";
-import { useRouter } from "next/navigation";
 import { FC } from "react";
 
 export const Profile: FC = () => {
@@ -17,6 +16,9 @@ export const Profile: FC = () => {
       <Divider />
       <p>ID: {user.id}</p>
       <p>Name: {user.name}</p>
+      <p>AccessToken: {user.accessToken}</p>
+      <p>AccessTokenExpires: {user.accessTokenExpires}</p>
+      <p>RefreshToken: {user.refreshToken}</p>
     </Box>
   );
 };

@@ -21,9 +21,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     }
 
     updateUser({
-      id: session.user.id,
-      name: session.user.name ?? undefined,
-      email: session.user.email,
+      ...session.user,
+      emailVerified: session.user.emailVerified ? true : false,
     });
   }, [session, updateUser]);
 
